@@ -266,6 +266,13 @@ export default function HomePage() {
           style={{ y: backgroundY }}
           className="absolute inset-0"
         >
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/image copy.png')" }}
+          />
+          {/* Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-background/85" />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-purple-500/5" />
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50 animate-pulse-glow" />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl opacity-50 animate-pulse-glow" style={{ animationDelay: '1s' }} />

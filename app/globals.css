@@ -123,6 +123,13 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .hero-bg {
+    background-image: url('/image copy.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 
 @keyframes fadeIn {
