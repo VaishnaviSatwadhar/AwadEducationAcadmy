@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,161 +21,172 @@ import {
   Globe,
   Shield,
   ChevronRight,
-  Search,
+  Phone,
   ArrowRight,
   Sparkles,
   Heart,
   Clock,
   TrendingUp,
   CheckCircle,
+  MapPin,
+  Mail,
+  Youtube,
+  Facebook,
+  ExternalLink,
+  GraduationCap,
+  Atom,
+  FlaskConical,
+  Dna,
+  Target,
+  Calendar,
 } from 'lucide-react';
 
-const featuredCourses = [
+const foundationBatches = [
   {
     id: '1',
-    title: 'Complete Web Development Bootcamp 2024',
-    instructor: 'Sarah Johnson',
+    title: 'Physics Foundation Course',
+    instructor: 'Awad Sir',
     rating: 4.9,
-    reviews: 2847,
-    students: 15420,
-    price: 89.99,
-    discountPrice: 12.99,
-    image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=600',
-    category: 'Web Development',
-    level: 'Beginner',
-    duration: '65 hours',
-    lessons: 412,
+    reviews: 284,
+    students: 520,
+    price: 0,
+    image: 'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=600',
+    category: 'Physics',
+    level: '11th-12th',
+    duration: '12 months',
+    lessons: 150,
+    description: 'Complete Physics syllabus with practical experiments and numerical practice',
   },
   {
     id: '2',
-    title: 'Advanced React & Next.js Masterclass',
-    instructor: 'Michael Chen',
+    title: 'Chemistry Foundation Course',
+    instructor: 'Awad Sir',
     rating: 4.8,
-    reviews: 1923,
-    students: 9876,
-    price: 129.99,
-    discountPrice: 17.99,
-    image: 'https://images.pexels.com/photos/11035385/pexels-photo-11035385.jpeg?auto=compress&cs=tinysrgb&w=600',
-    category: 'React',
-    level: 'Advanced',
-    duration: '48 hours',
-    lessons: 286,
+    reviews: 223,
+    students: 480,
+    price: 0,
+    image: 'https://images.pexels.com/photos/2280551/pexels-photo-2280551.jpeg?auto=compress&cs=tinysrgb&w=600',
+    category: 'Chemistry',
+    level: '11th-12th',
+    duration: '12 months',
+    lessons: 140,
+    description: 'Organic, Inorganic & Physical Chemistry with lab experiments',
   },
   {
     id: '3',
-    title: 'UI/UX Design Fundamentals',
-    instructor: 'Emily Davis',
-    rating: 4.7,
-    reviews: 1456,
-    students: 7234,
-    price: 79.99,
-    discountPrice: 11.99,
-    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600',
-    category: 'Design',
-    level: 'Beginner',
-    duration: '32 hours',
-    lessons: 189,
+    title: 'Biology Foundation Course',
+    instructor: 'Awad Sir',
+    rating: 4.9,
+    reviews: 312,
+    students: 640,
+    price: 0,
+    image: 'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg?auto=compress&cs=tinysrgb&w=600',
+    category: 'Biology',
+    level: '11th-12th',
+    duration: '12 months',
+    lessons: 135,
+    description: 'Complete Botany & Zoology syllabus with practical knowledge',
   },
   {
     id: '4',
-    title: 'Python for Data Science & AI',
-    instructor: 'Dr. James Wilson',
+    title: 'NEET Preparation Batch',
+    instructor: 'Awad Sir',
     rating: 4.9,
-    reviews: 3214,
-    students: 18932,
-    price: 149.99,
-    discountPrice: 19.99,
-    image: 'https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=600',
-    category: 'Data Science',
-    level: 'Intermediate',
-    duration: '56 hours',
-    lessons: 324,
+    reviews: 421,
+    students: 850,
+    price: 0,
+    image: 'https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=600',
+    category: 'NEET',
+    level: 'Medical Entrance',
+    duration: '24 months',
+    lessons: 450,
+    description: 'Complete NEET UG preparation with mock tests and doubt sessions',
   },
 ];
 
-const categories = [
-  { name: 'Web Development', icon: '🌐', count: 1250, color: 'from-blue-500 to-cyan-400' },
-  { name: 'Mobile Development', icon: '📱', count: 890, color: 'from-green-500 to-emerald-400' },
-  { name: 'Data Science', icon: '📊', count: 720, color: 'from-purple-500 to-pink-400' },
-  { name: 'UI/UX Design', icon: '🎨', count: 540, color: 'from-orange-500 to-yellow-400' },
-  { name: 'Business', icon: '💼', count: 630, color: 'from-red-500 to-rose-400' },
-  { name: 'Marketing', icon: '📢', count: 480, color: 'from-teal-500 to-cyan-400' },
+const subjects = [
+  { name: 'Physics', icon: Atom, count: 450, color: 'from-blue-500 to-cyan-400', description: 'Mechanics, Optics, Thermodynamics & more' },
+  { name: 'Chemistry', icon: FlaskConical, count: 380, color: 'from-green-500 to-emerald-400', description: 'Organic, Inorganic & Physical Chemistry' },
+  { name: 'Biology', icon: Dna, count: 520, color: 'from-purple-500 to-pink-400', description: 'Botany & Zoology with practicals' },
+  { name: 'NEET Prep', icon: Target, count: 320, color: 'from-orange-500 to-yellow-400', description: 'Medical entrance exam preparation' },
+  { name: 'JEE Prep', icon: GraduationCap, count: 280, color: 'from-red-500 to-rose-400', description: 'Engineering entrance preparation' },
+  { name: 'Board Exams', icon: Award, count: 400, color: 'from-teal-500 to-cyan-400', description: 'Maharashtra Board 11th & 12th' },
 ];
 
 const testimonials = [
   {
-    name: 'Alex Thompson',
-    role: 'Senior Developer at Google',
+    name: 'Rahul Sharma',
+    role: 'NEET 2024 - Selected at Grant Medical College',
     image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150',
-    content: 'Awad Academy transformed my career. The courses are incredibly well-structured, and the instructors are world-class. I went from junior to senior developer in just 8 months.',
+    content: 'Awad Sir\'s teaching method is exceptional. The way he explains complex Physics concepts made everything crystal clear. I scored 680+ in NEET thanks to this academy.',
     rating: 5,
   },
   {
-    name: 'Maria Garcia',
-    role: 'UX Designer at Airbnb',
+    name: 'Priya Patil',
+    role: '12th Science - 95% in Board Exams',
     image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150',
-    content: 'The design courses here are exceptional. Every project was practical and relevant. I built an amazing portfolio that landed me my dream job.',
+    content: 'Best coaching institute in Kaij for science students. Personal attention and doubt solving sessions helped me achieve my goals. Highly recommended!',
     rating: 5,
   },
   {
-    name: 'David Kim',
-    role: 'Entrepreneur & Founder',
+    name: 'Amit Chavan',
+    role: 'JEE 2024 - AIR 15,420',
     image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150',
-    content: 'As a busy founder, I needed flexible learning. Awad Academy gave me the skills to build my startup MVP without hiring developers. Best investment ever.',
+    content: 'The foundation course here is outstanding. Small batch sizes ensure personal attention. Awad Sir\'s dedication to each student is remarkable.',
     rating: 5,
   },
 ];
 
 const stats = [
-  { label: 'Students', value: '50,000+', icon: Users },
-  { label: 'Courses', value: '1,000+', icon: BookOpen },
-  { label: 'Instructors', value: '100+', icon: Award },
-  { label: 'Countries', value: '120+', icon: Globe },
+  { label: 'Students Taught', value: '2000+', icon: Users },
+  { label: 'Success Rate', value: '95%', icon: TrendingUp },
+  { label: 'Years Experience', value: '15+', icon: Award },
+  { label: 'Selection Rate', value: '85%', icon: Target },
 ];
 
 const features = [
   {
-    icon: Zap,
-    title: 'Learn at Your Pace',
-    description: 'Access courses anytime, anywhere. Learn on your schedule with lifetime access to all course materials.',
-  },
-  {
-    icon: Award,
-    title: 'Earn Certificates',
-    description: 'Get recognized certificates upon completion to showcase your new skills to employers.',
+    icon: GraduationCap,
+    title: 'Expert Faculty',
+    description: 'Learn from Awad Sir with 15+ years of teaching experience in Physics, Chemistry, and Biology.',
   },
   {
     icon: Users,
-    title: 'Expert Instructors',
-    description: 'Learn from industry professionals and world-renowned experts in their fields.',
+    title: 'Small Batch Size',
+    description: 'Limited students per batch ensuring personal attention and individual doubt solving.',
   },
   {
-    icon: Shield,
-    title: 'Money-Back Guarantee',
-    description: '30-day money-back guarantee on all courses. Learn risk-free with complete confidence.',
+    icon: Calendar,
+    title: 'Regular Tests',
+    description: 'Weekly tests and mock exams to track progress and prepare for board & competitive exams.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Study Material',
+    description: 'Comprehensive notes, practice papers, and previous year question paper discussions.',
   },
 ];
 
 const faqs = [
   {
-    question: 'How do I get started with Awad Academy?',
-    answer: 'Simply create a free account, browse our course catalog, and enroll in any course that interests you. You can start learning immediately after enrollment.',
+    question: 'What courses does Awad Educational Academy offer?',
+    answer: 'We offer foundation courses for 11th and 12th Science (Physics, Chemistry, Biology) along with NEET and JEE preparation batches. All courses are taught by Awad Sir with focus on conceptual clarity and practical understanding.',
   },
   {
-    question: 'Do I get a certificate after completing a course?',
-    answer: 'Yes! Upon successful completion of any course, you receive a verified certificate that you can share on LinkedIn, include in your resume, or showcase to employers.',
+    question: 'What is the batch size at the academy?',
+    answer: 'We maintain small batch sizes of 20-25 students to ensure personal attention and effective doubt solving for each student.',
   },
   {
-    question: 'What payment methods do you accept?',
-    answer: 'We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and various local payment methods depending on your region.',
+    question: 'How can I enroll in a course?',
+    answer: 'You can visit our academy at Jaibhavani Chowk, Kaij or call us at 09422105262. You can also reach us through our Facebook page or visit during academy hours.',
   },
   {
-    question: 'Can I access courses on mobile devices?',
-    answer: 'Absolutely! Our platform is fully responsive and we have dedicated iOS and Android apps for learning on the go. Download videos for offline viewing.',
+    question: 'Do you provide study materials?',
+    answer: 'Yes, we provide comprehensive study materials including notes, practice papers, and previous year question papers for all subjects.',
   },
   {
-    question: 'What if I\'m not satisfied with a course?',
-    answer: 'We offer a 30-day money-back guarantee on all courses. If you\'re not completely satisfied, simply request a refund within 30 days of purchase.',
+    question: 'What are the class timings?',
+    answer: 'Classes are conducted in morning and evening batches. Morning batch: 7:00 AM - 10:00 AM, Evening batch: 4:00 PM - 7:00 PM. Sunday special classes for doubt solving.',
   },
 ];
 
@@ -211,7 +223,6 @@ function AnimatedCounter({ value, suffix = '' }: { value: string; suffix?: strin
 }
 
 export default function HomePage() {
-  const [searchQuery, setSearchQuery] = useState('');
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
   const heroScale = useTransform(scrollY, [0, 400], [1, 0.95]);
@@ -230,31 +241,30 @@ export default function HomePage() {
             <Logo size="md" />
 
             <div className="hidden md:flex items-center gap-8">
-              <Link href="/courses" className="text-sm font-medium hover:text-primary transition-colors">
+              <a href="#courses" className="text-sm font-medium hover:text-primary transition-colors">
                 Courses
-              </Link>
-              <Link href="/categories" className="text-sm font-medium hover:text-primary transition-colors">
-                Categories
-              </Link>
-              <Link href="/instructors" className="text-sm font-medium hover:text-primary transition-colors">
-                Instructors
-              </Link>
-              <Link href="/pricing" className="text-sm font-medium hover:text-primary transition-colors">
-                Pricing
-              </Link>
+              </a>
+              <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">
+                About
+              </a>
+              <a href="#subjects" className="text-sm font-medium hover:text-primary transition-colors">
+                Subjects
+              </a>
+              <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
+                Contact
+              </a>
             </div>
 
             <div className="flex items-center gap-4">
-              <Link href="/login">
-                <Button variant="ghost" size="sm">
-                  Sign in
-                </Button>
-              </Link>
-              <Link href="/register">
+              <a href="tel:09422105262" className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
+                <Phone className="w-4 h-4" />
+                <span className="hidden sm:inline">09422105262</span>
+              </a>
+              <a href="#contact">
                 <Button size="sm" className="gradient-bg">
-                  Get Started
+                  Join Now
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -271,8 +281,8 @@ export default function HomePage() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/image copy.png')" }}
           />
-          {/* Overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-background/85" />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-background/80" />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-purple-500/5" />
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50 animate-pulse-glow" />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl opacity-50 animate-pulse-glow" style={{ animationDelay: '1s' }} />
@@ -290,7 +300,7 @@ export default function HomePage() {
           >
             <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm">
               <Sparkles className="w-4 h-4 mr-2" />
-              New: AI-Powered Learning Paths
+              Trusted by 2000+ Students in Kaij
               <ArrowRight className="w-4 h-4 ml-2" />
             </Badge>
           </motion.div>
@@ -301,12 +311,11 @@ export default function HomePage() {
             transition={{ delay: 0.1, duration: 0.6 }}
             className="text-5xl md:text-7xl font-bold mb-6 max-w-4xl mx-auto leading-tight"
           >
-            Learn Without{' '}
-            <span className="gradient-text">Limits</span>
-            ,{' '}
+            Build Your{' '}
+            <span className="gradient-text">Science Foundation</span>
             <br className="hidden md:block" />
-            Grow Without{' '}
-            <span className="gradient-text">Boundaries</span>
+            with{' '}
+            <span className="gradient-text">Awad Sir</span>
           </motion.h1>
 
           <motion.p
@@ -315,8 +324,8 @@ export default function HomePage() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
           >
-            Master new skills with world-class courses taught by industry experts.
-            From beginner to professional, we have the perfect path for you.
+            Expert coaching for Physics, Chemistry & Biology. Preparing students for
+            Board Exams, NEET & JEE since 2010.
           </motion.p>
 
           <motion.div
@@ -325,22 +334,17 @@ export default function HomePage() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
           >
-            <div className="relative w-full max-w-md mx-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-              <Input
-                type="text"
-                placeholder="What do you want to learn?"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 pr-4 h-14 text-base rounded-full shadow-lg"
-              />
-              <Button
-                size="lg"
-                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full gradient-bg"
-              >
-                Search
+            <a href="tel:09422105262">
+              <Button size="lg" className="gradient-bg gap-2 h-14 px-8">
+                <Phone className="w-5 h-5" />
+                Call Now
               </Button>
-            </div>
+            </a>
+            <a href="#courses">
+              <Button size="lg" variant="outline" className="h-14 px-8">
+                View Courses
+              </Button>
+            </a>
           </motion.div>
 
           <motion.div
@@ -349,14 +353,13 @@ export default function HomePage() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="flex flex-wrap gap-3 justify-center mb-12"
           >
-            {['JavaScript', 'React', 'Python', 'UI/UX', 'Machine Learning'].map((tag, i) => (
-              <Link
+            {['Physics', 'Chemistry', 'Biology', 'NEET Prep', 'JEE Prep'].map((tag, i) => (
+              <span
                 key={i}
-                href={`/courses?q=${tag.toLowerCase()}`}
-                className="px-4 py-2 rounded-full bg-secondary/50 hover:bg-secondary text-sm font-medium transition-colors"
+                className="px-4 py-2 rounded-full bg-secondary/50 text-sm font-medium"
               >
                 {tag}
-              </Link>
+              </span>
             ))}
           </motion.div>
 
@@ -370,7 +373,7 @@ export default function HomePage() {
               <div key={i} className="text-center">
                 <stat.icon className="w-6 h-6 mx-auto mb-2 text-primary" />
                 <div className="text-3xl font-bold">
-                  <AnimatedCounter value={stat.label === 'Students' ? '50000' : stat.label === 'Courses' ? '1000' : stat.label === 'Instructors' ? '100' : '120'} suffix={stat.label === 'Students' || stat.label === 'Courses' ? '+' : stat.label === 'Countries' ? '+' : '+'} />
+                  <AnimatedCounter value={stat.label === 'Students Taught' ? '2000' : stat.label === 'Success Rate' ? '95' : stat.label === 'Years Experience' ? '15' : '85'} suffix={stat.label === 'Students Taught' || stat.label === 'Years Experience' ? '+' : '%'} />
                 </div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </div>
@@ -394,8 +397,83 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* Featured Courses Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-secondary/30">
+      {/* About Section */}
+      <section id="about" className="py-24 bg-gradient-to-b from-background to-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <Badge variant="secondary" className="mb-4">About Awad Educational Academy</Badge>
+              <h2 className="text-4xl font-bold mb-4">
+                Nurturing Future <span className="gradient-text">Doctors & Engineers</span>
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Awad Educational Academy, founded by Awad Sir, has been the leading science coaching
+                institute in Kaij, Maharashtra for over 15 years. We specialize in building strong
+                foundations in Physics, Chemistry, and Biology for 11th and 12th standard students.
+              </p>
+              <p className="text-lg text-muted-foreground">
+                Our personalized teaching approach and small batch sizes ensure every student receives
+                individual attention. We prepare students not just for board exams but also for competitive
+                exams like NEET and JEE with remarkable success rates.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span>15+ Years Experience</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span>2000+ Students Taught</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <span>85% Selection Rate</span>
+                </div>
+              </div>
+              <a href="#contact">
+                <Button size="lg" className="gradient-bg gap-2">
+                  Contact Us
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </a>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.pexels.com/photos/5212335/pexels-photo-5212335.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Classroom teaching at Awad Educational Academy"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-card p-6 rounded-2xl shadow-xl border">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Award className="w-8 h-8 text-primary" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">95%</div>
+                    <div className="text-sm text-muted-foreground">Success Rate</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Foundation Courses Section */}
+      <section id="courses" className="py-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -403,15 +481,15 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <Badge variant="secondary" className="mb-4">Featured Courses</Badge>
-            <h2 className="text-4xl font-bold mb-4">Start Learning Today</h2>
+            <Badge variant="secondary" className="mb-4">Our Courses</Badge>
+            <h2 className="text-4xl font-bold mb-4">Foundation Courses for Science Students</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our most popular courses, loved by thousands of students worldwide
+              Comprehensive coaching for 11th & 12th Science with focus on Board, NEET & JEE preparation
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredCourses.map((course, i) => (
+            {foundationBatches.map((course, i) => (
               <motion.div
                 key={course.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -419,95 +497,62 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <Link href={`/courses/${course.id}`}>
-                  <Card className="group overflow-hidden h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div className="relative aspect-video overflow-hidden">
-                      <img
-                        src={course.image}
-                        alt={course.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute top-3 left-3 flex gap-2">
-                        <Badge variant="secondary" className="bg-white/90 text-primary">
-                          {course.level}
-                        </Badge>
-                        {course.discountPrice && (
-                          <Badge variant="destructive" className="bg-red-500">
-                            {Math.round((1 - course.discountPrice / course.price) * 100)}% OFF
-                          </Badge>
-                        )}
-                      </div>
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
-                          <Play className="w-6 h-6 text-primary ml-1" />
-                        </div>
-                      </div>
-                    </div>
-                    <CardHeader className="pb-2">
-                      <Badge variant="outline" className="w-fit mb-2 text-xs">
-                        {course.category}
+                <Card className="group overflow-hidden h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                  <div className="relative aspect-video overflow-hidden">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute top-3 left-3 flex gap-2">
+                      <Badge variant="secondary" className="bg-white/90 text-primary">
+                        {course.level}
                       </Badge>
-                      <CardTitle className="text-lg line-clamp-2 group-hover:text-primary transition-colors">
-                        {course.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="pb-3">
-                      <p className="text-sm text-muted-foreground mb-3">{course.instructor}</p>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="font-medium">{course.rating}</span>
-                        <span className="text-muted-foreground text-sm">
-                          ({course.reviews.toLocaleString()} reviews)
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          {course.duration}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <BookOpen className="w-4 h-4" />
-                          {course.lessons} lessons
-                        </span>
-                      </div>
-                    </CardContent>
-                    <CardFooter className="pt-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-primary">
-                          ${course.discountPrice || course.price}
-                        </span>
-                        {course.discountPrice && (
-                          <span className="text-sm text-muted-foreground line-through">
-                            ${course.price}
-                          </span>
-                        )}
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </Link>
+                    </div>
+                  </div>
+                  <CardHeader className="pb-2">
+                    <Badge variant="outline" className="w-fit mb-2 text-xs">
+                      {course.category}
+                    </Badge>
+                    <CardTitle className="text-lg line-clamp-2 group-hover:text-primary transition-colors">
+                      {course.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pb-3">
+                    <p className="text-sm text-muted-foreground mb-3">{course.description}</p>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <span className="font-medium">{course.rating}</span>
+                      <span className="text-muted-foreground text-sm">
+                        ({course.reviews} reviews)
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {course.duration}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <BookOpen className="w-4 h-4" />
+                        {course.lessons}+ Topics
+                      </span>
+                    </div>
+                  </CardContent>
+                  <CardFooter className="pt-0">
+                    <Badge variant="secondary" className="w-full justify-center py-2">
+                      Join Now
+                    </Badge>
+                  </CardFooter>
+                </Card>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <Link href="/courses">
-              <Button size="lg" variant="outline" className="gap-2">
-                View All Courses
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </motion.div>
         </div>
       </section>
 
-      {/* Categories Section */}
-      <section className="py-24">
+      {/* Subjects Section */}
+      <section id="subjects" className="py-24 bg-gradient-to-b from-secondary/30 to-background">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -515,15 +560,15 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <Badge variant="secondary" className="mb-4">Browse Categories</Badge>
-            <h2 className="text-4xl font-bold mb-4">Find Your Perfect Course</h2>
+            <Badge variant="secondary" className="mb-4">Our Subjects</Badge>
+            <h2 className="text-4xl font-bold mb-4">Master Every Subject</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Explore our wide range of topics and find the course that interests you
+              Complete syllabus coverage for each subject with practical knowledge and exam-focused preparation
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map((category, i) => (
+            {subjects.map((subject, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -531,24 +576,24 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <Link href={`/categories/${category.name.toLowerCase().replace(/\s+/g, '-')}`}>
-                  <Card className="group h-full hover:shadow-xl transition-all duration-300 overflow-hidden">
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center text-3xl group-hover:scale-110 transition-transform`}>
-                          {category.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-lg mb-1">{category.name}</h3>
-                          <p className="text-sm text-muted-foreground">
-                            {category.count.toLocaleString()} courses
-                          </p>
-                        </div>
-                        <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                <Card className="group h-full hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${subject.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                        <subject.icon className="w-8 h-8 text-white" />
                       </div>
-                    </CardContent>
-                  </Card>
-                </Link>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg mb-1">{subject.name}</h3>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          {subject.description}
+                        </p>
+                        <p className="text-sm font-medium text-primary">
+                          {subject.count}+ Topics Covered
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -556,7 +601,7 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-24 bg-gradient-to-b from-secondary/30 to-background">
+      <section className="py-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -567,7 +612,7 @@ export default function HomePage() {
             <Badge variant="secondary" className="mb-4">Why Choose Us</Badge>
             <h2 className="text-4xl font-bold mb-4">The Awad Academy Advantage</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We're committed to providing the best learning experience
+              We are committed to providing the best science education in Kaij
             </p>
           </motion.div>
 
@@ -596,7 +641,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24">
+      <section className="py-24 bg-gradient-to-b from-secondary/30 to-background">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -604,10 +649,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <Badge variant="secondary" className="mb-4">Student Stories</Badge>
-            <h2 className="text-4xl font-bold mb-4">Loved by Learners Worldwide</h2>
+            <Badge variant="secondary" className="mb-4">Student Success Stories</Badge>
+            <h2 className="text-4xl font-bold mb-4">Our Students Achieve Great Results</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              See what our students have to say about their learning journey
+              See what our students have to say about their learning experience
             </p>
           </motion.div>
 
@@ -651,7 +696,6 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 gradient-bg opacity-10" />
-        <div className="absolute inset-0 bg-mesh-gradient opacity-30" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -660,27 +704,25 @@ export default function HomePage() {
             className="max-w-4xl mx-auto text-center glass-card p-12"
           >
             <h2 className="text-4xl font-bold mb-4">
-              Ready to Start Your Learning Journey?
+              Ready to Start Your Science Journey?
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Join over 50,000 students already learning on Awad Academy
+              Join Awad Educational Academy and build a strong foundation for your future
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/register">
+              <a href="tel:09422105262">
                 <Button size="lg" className="gradient-bg gap-2 h-14 px-8">
-                  Start Learning Free
-                  <ArrowRight className="w-5 h-5" />
+                  <Phone className="w-5 h-5" />
+                  Call: 09422105262
                 </Button>
-              </Link>
-              <Link href="/courses">
-                <Button size="lg" variant="outline" className="h-14 px-8">
-                  Browse Courses
+              </a>
+              <a href="https://maps.google.com/?q=Awad+Educational+Academy+Kaij" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="h-14 px-8 gap-2">
+                  <MapPin className="w-5 h-5" />
+                  Visit Academy
                 </Button>
-              </Link>
+              </a>
             </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              No credit card required. Start with free courses today.
-            </p>
           </motion.div>
         </div>
       </section>
@@ -697,7 +739,7 @@ export default function HomePage() {
             <Badge variant="secondary" className="mb-4">FAQ</Badge>
             <h2 className="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Got questions? We've got answers.
+              Got questions? We have got answers.
             </p>
           </motion.div>
 
@@ -723,33 +765,137 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16">
+      {/* Contact Section */}
+      <section id="contact" className="py-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-2xl mx-auto text-center"
+            className="text-center mb-16"
           >
-            <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
-            <p className="text-muted-foreground mb-6">
-              Get notified about new courses, special offers, and learning tips
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="h-14 flex-1"
-              />
-              <Button type="submit" size="lg" className="gradient-bg h-14 px-8">
-                Subscribe
-              </Button>
-            </form>
-            <p className="mt-4 text-sm text-muted-foreground">
-              No spam, unsubscribe anytime.
+            <Badge variant="secondary" className="mb-4">Contact Us</Badge>
+            <h2 className="text-4xl font-bold mb-4">Get in Touch</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Visit our academy or reach out to us through phone or social media
             </p>
           </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                        <MapPin className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">Address</h4>
+                        <p className="text-muted-foreground">
+                          Jaibhavani Chowk, Infront Petrol, <br />
+                          Dharurer Road, Kaij, <br />
+                          Beed-431123, Maharashtra
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                        <Phone className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">Phone</h4>
+                        <a href="tel:09422105262" className="text-primary hover:underline">
+                          09422105262
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                        <Globe className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">Follow Us</h4>
+                        <div className="flex gap-4 mt-2">
+                          <a
+                            href="https://www.youtube.com/@awadeducationalacademyaea5913"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 rounded-full bg-red-500/10 hover:bg-red-500/20 flex items-center justify-center transition-colors"
+                          >
+                            <Youtube className="w-5 h-5 text-red-500" />
+                          </a>
+                          <a
+                            href="https://www.facebook.com/sofworld"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 rounded-full bg-blue-500/10 hover:bg-blue-500/20 flex items-center justify-center transition-colors"
+                          >
+                            <Facebook className="w-5 h-5 text-blue-500" />
+                          </a>
+                          <a
+                            href="https://www.google.com/maps/place/Awad+Educational+Academy,+Kaij/@18.7150936,76.064181,17z"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 rounded-full bg-green-500/10 hover:bg-green-500/20 flex items-center justify-center transition-colors"
+                          >
+                            <MapPin className="w-5 h-5 text-green-500" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8">
+                    <a
+                      href="https://www.google.com/maps/place/Awad+Educational+Academy,+Kaij/@18.7150936,76.064181,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc53f740b30ba23:0x2c6666615739f84b!8m2!3d18.7150936!4d76.0667559!16s%2Fg%2F11ddzyg4tf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-primary hover:underline"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Open in Google Maps
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="aspect-video rounded-2xl overflow-hidden border shadow-xl">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1514.3734486537!2d76.064181!3d18.7150936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc53f740b30ba23%3A0x2c6666615739f84b!2sAwad%20Educational%20Academy%2C%20Kaij!5e0!3m2!1sen!2sin!4v1703287654321!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="grayscale hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-card p-6 rounded-2xl shadow-xl border">
+                <div className="text-center">
+                  <Clock className="w-8 h-8 mx-auto mb-2 text-primary" />
+                  <div className="font-semibold">Timing</div>
+                  <div className="text-sm text-muted-foreground">7AM - 10AM, 4PM - 7PM</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -757,64 +903,82 @@ export default function HomePage() {
       <footer className="border-t bg-card/50">
         <div className="container mx-auto px-4 py-16">
           <div className="grid md:grid-cols-4 gap-12">
-            <div>
+            <div className="md:col-span-2">
               <Logo size="md" linkClassName="mb-4" />
-              <p className="text-muted-foreground mb-4">
-                Empowering learners worldwide with quality education and expert instruction.
+              <p className="text-muted-foreground mb-4 max-w-md">
+                Awad Educational Academy - Premier science coaching institute in Kaij, Maharashtra.
+                Specializing in Physics, Chemistry & Biology foundation courses for 11th & 12th students.
+                Preparing students for Board exams, NEET & JEE since 2010.
               </p>
-              <div className="flex gap-4">
-                {['twitter', 'linkedin', 'youtube', 'instagram'].map((social) => (
-                  <a
-                    key={social}
-                    href={`https://${social}.com`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                  >
-                    <span className="sr-only">{social}</span>
-                    <Globe className="w-5 h-5" />
-                  </a>
-                ))}
+              <div className="flex gap-3">
+                <a
+                  href="https://www.youtube.com/@awadeducationalacademyaea5913"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-red-500/10 hover:bg-red-500/20 flex items-center justify-center transition-colors"
+                  aria-label="YouTube Channel"
+                >
+                  <Youtube className="w-5 h-5 text-red-500" />
+                </a>
+                <a
+                  href="https://www.facebook.com/sofworld"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-blue-500/10 hover:bg-blue-500/20 flex items-center justify-center transition-colors"
+                  aria-label="Facebook Page"
+                >
+                  <Facebook className="w-5 h-5 text-blue-500" />
+                </a>
+                <a
+                  href="https://www.google.com/search?q=awad+educational+academy+kaij"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors"
+                  aria-label="Google Search"
+                >
+                  <Globe className="w-5 h-5 text-primary" />
+                </a>
               </div>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Learning</h4>
+              <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2">
-                {['Browse Courses', 'Categories', 'Learning Paths', 'Certificates', 'Pricing'].map((link) => (
+                {['About Us', 'Courses', 'Subjects', 'Testimonials', 'Contact'].map((link) => (
                   <li key={link}>
-                    <Link href={`/${link.toLowerCase().replace(/\s+/g, '-')}`} className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href={`#${link.toLowerCase().replace(/\s+/g, '-')}`} className="text-muted-foreground hover:text-primary transition-colors">
                       {link}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                {['About Us', 'Careers', 'Blog', 'Press', 'Partners'].map((link) => (
-                  <li key={link}>
-                    <Link href={`/${link.toLowerCase().replace(/\s+/g, '-')}`} className="text-muted-foreground hover:text-primary transition-colors">
-                      {link}
-                    </Link>
-                  </li>
-                ))}
+              <h4 className="font-semibold mb-4">Contact Info</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2">
+                  <MapPin className="w-4 h-4 mt-1 shrink-0 text-primary" />
+                  <span className="text-muted-foreground text-sm">
+                    Jaibhavani Chowk, Infront Petrol, Dharurer Road, Kaij, Beed-431123, Maharashtra
+                  </span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 shrink-0 text-primary" />
+                  <a href="tel:09422105262" className="text-muted-foreground hover:text-primary transition-colors">
+                    09422105262
+                  </a>
+                </li>
               </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Support</h4>
-              <ul className="space-y-2">
-                {['Help Center', 'Contact Us', 'Terms of Service', 'Privacy Policy', 'Cookie Policy'].map((link) => (
-                  <li key={link}>
-                    <Link href={`/${link.toLowerCase().replace(/\s+/g, '-')}`} className="text-muted-foreground hover:text-primary transition-colors">
-                      {link}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <a
+                href="https://www.google.com/maps/place/Awad+Educational+Academy,+Kaij/@18.7150936,76.064181,17z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-4 text-sm text-primary hover:underline"
+              >
+                <MapPin className="w-4 h-4" />
+                Get Directions
+              </a>
             </div>
           </div>
 
@@ -823,9 +987,7 @@ export default function HomePage() {
               © {new Date().getFullYear()} Awad Educational Academy. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-muted-foreground">
-              <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
-              <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
-              <Link href="/cookies" className="hover:text-primary transition-colors">Cookies</Link>
+              <span>Founded by Awad Sir</span>
             </div>
           </div>
         </div>
