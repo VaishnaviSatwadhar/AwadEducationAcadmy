@@ -214,8 +214,8 @@ export default function HomePage() {
         <motion.div style={{ y: backgroundY }} className="absolute inset-0">
           <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/image copy.png')" }} />
           <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/95" />
-          <div className="absolute inset-0 pcb-traces opacity-40" />
-          <div className="absolute inset-0 circuit-nodes opacity-50" />
+          <div className="absolute inset-0 pcb-traces opacity-15" />
+          <div className="absolute inset-0 circuit-nodes opacity-20" />
 
           {/* Floating science elements */}
           <motion.div animate={{ y: [-20, 20, -20], rotate: [0, 10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-20 left-10 opacity-20">
@@ -366,7 +366,7 @@ export default function HomePage() {
       {/* About Section */}
       <section id="about" className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 science-gradient" />
-        <div className="absolute inset-0 circuit-nodes opacity-30" />
+        <div className="absolute inset-0 circuit-nodes opacity-15" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6">
@@ -449,7 +449,7 @@ export default function HomePage() {
 
       {/* Courses Section */}
       <section id="courses" className="section-padding bg-card/50 relative overflow-hidden">
-        <div className="absolute inset-0 pcb-traces opacity-20" />
+        <div className="absolute inset-0 pcb-traces opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeader badge="Our Courses" title="Foundation & Competitive Exam Courses" subtitle="Comprehensive coaching for 11th & 12th Science with focus on Board, NEET & JEE preparation" />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -509,7 +509,7 @@ export default function HomePage() {
       {/* Teaching Methodology Section */}
       <section id="methodology" className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 science-gradient" />
-        <div className="absolute inset-0 circuit-nodes opacity-30" />
+        <div className="absolute inset-0 circuit-nodes opacity-15" />
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeader badge="Our Approach" title="Teaching Methodology" subtitle="Our proven teaching methods ensure conceptual clarity and exam success" />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -530,7 +530,7 @@ export default function HomePage() {
 
       {/* Subjects Section */}
       <section id="subjects" className="section-padding bg-card/50 relative overflow-hidden">
-        <div className="absolute inset-0 pcb-traces opacity-20" />
+        <div className="absolute inset-0 pcb-traces opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeader badge="Subjects" title="Complete Subject Coverage" subtitle="Master every topic with our comprehensive syllabus coverage" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -611,7 +611,7 @@ export default function HomePage() {
 
       {/* Facilities Section */}
       <section className="section-padding bg-card/50 relative overflow-hidden">
-        <div className="absolute inset-0 pcb-traces opacity-20" />
+        <div className="absolute inset-0 pcb-traces opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeader badge="Facilities" title="Modern Learning Environment" subtitle="Well-equipped facilities for effective learning" />
           <div className="grid md:grid-cols-3 gap-6">
@@ -638,7 +638,7 @@ export default function HomePage() {
       {/* Why Choose Us Section */}
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 science-gradient" />
-        <div className="absolute inset-0 circuit-nodes opacity-30" />
+        <div className="absolute inset-0 circuit-nodes opacity-15" />
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeader badge="Why Us" title="Why Choose Awad Academy?" subtitle="We are committed to providing the best science education in Kaij" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -666,7 +666,7 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 gradient-bg opacity-5" />
-        <div className="absolute inset-0 pcb-traces opacity-30" />
+        <div className="absolute inset-0 pcb-traces opacity-15" />
         <div className="absolute inset-0 molecule-bg opacity-50" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center glass-card p-8 md:p-12 rounded-2xl border-2 border-primary/20 relative overflow-hidden">
@@ -715,7 +715,7 @@ export default function HomePage() {
       {/* Contact Section */}
       <section id="contact" className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 science-gradient" />
-        <div className="absolute inset-0 circuit-nodes opacity-30" />
+        <div className="absolute inset-0 circuit-nodes opacity-15" />
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeader badge="Contact Us" title="Get in Touch" subtitle="Visit our academy or reach us through phone or social media" />
           <div className="grid lg:grid-cols-2 gap-8">
@@ -793,7 +793,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="border-t bg-card relative overflow-hidden">
-        <div className="absolute inset-0 pcb-traces opacity-20" />
+        <div className="absolute inset-0 pcb-traces opacity-10" />
         <div className="absolute inset-0 molecule-bg opacity-30" />
         <div className="container mx-auto px-4 py-12 relative z-10">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
