@@ -1,0 +1,32 @@
+# Smart Water Reminder - Python Dependencies
+# Core GUI
+customtkinter>=5.2.0
+tkinter; platform_system == "Windows"
+
+# Database
+sqlite3; python_version < "3.0"
+
+# Notifications
+plyer>=2.1.0
+
+# Scheduling
+schedule>=1.2.0
+
+# Voice / Text-to-Speech
+pyttsx3>=2.90
+
+# Charts
+matplotlib>=3.7.0
+
+# Data analysis / CSV
+pandas>=2.0.0
+
+# Sound playback
+pygame>=2.5.0
+
+# Android (Kivy) - only required when building APK
+kivy>=2.2.0; platform_system != "Windows"
+buildozer>=1.5.0; platform_system != "Windows"
+
+# Packaging
+pyinstaller>=6.0.0
