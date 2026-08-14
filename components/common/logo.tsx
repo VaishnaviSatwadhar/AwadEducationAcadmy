@@ -31,13 +31,13 @@ export function Logo({
   return (
     <Link href="/" className={cn('flex items-center', linkClassName)}>
       <Image
-        src="/image.png"
+        src="/header-images/image.png"
         alt="Awad Educational Academy"
         width={width}
         height={height}
         className={cn(
-          'object-contain transition-opacity hover:opacity-90',
-          variant === 'light' && 'brightness-0 invert',
+          'object-contain transition-opacity hover:opacity-90 brightness-0 invert mix-blend-screen',
+          variant === 'dark' && 'brightness-100 invert-0 mix-blend-normal',
           className
         )}
         priority
@@ -51,11 +51,11 @@ export function LogoIcon({ size = 'md', className }: { size?: 'sm' | 'md' | 'lg'
 
   return (
     <Image
-      src="/image.png"
+      src="/header-images/image.png"
       alt="Awad Educational Academy"
       width={width}
       height={height}
-      className={cn('object-contain', className)}
+      className={cn('object-contain brightness-0 invert mix-blend-screen', className)}
       priority
     />
   );

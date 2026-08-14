@@ -14,7 +14,7 @@ import {
   GraduationCap, Atom, FlaskConical, Dna, Target, Calendar,
   Lightbulb, Brain, Microscope, Beaker, ChartBar, Trophy, Medal,
   Flame, BookOpen, CheckCircle, Globe, Heart, Zap, Shield, Crown,
-  Linkedin, Twitter, Mail, Quote, Rocket, PlayCircle, BadgeCheck,
+  Linkedin, Twitter, Mail, Quote, Rocket, PlayCircle, BadgeCheck, Menu, X,
   LucideIcon,
 } from 'lucide-react';
 
@@ -209,6 +209,7 @@ export default function HomePage() {
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
   const heroScale = useTransform(scrollY, [0, 400], [1, 0.98]);
   const backgroundY = useTransform(scrollY, [0, 400], [0, 150]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen academy-shell">
@@ -240,14 +241,43 @@ export default function HomePage() {
                 <Phone className="w-4 h-4" />
                 <span>09422105262</span>
               </a>
-              <a href="#contact">
-                <Button size="sm" className="gradient-bg shadow-lg shadow-primary/20 gap-1.5">
+              <a href="#contact" className="hidden sm:block">
+                <Button size="sm" className="gradient-bg shadow-lg shadow-primary/20 gap-1.5 rounded-full px-5">
                   Enroll Now
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Button>
               </a>
+              <button
+                type="button"
+                className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-foreground"
+                onClick={() => setIsMenuOpen((open) => !open)}
+                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMenuOpen}
+              >
+                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
             </div>
           </div>
+          {isMenuOpen && (
+            <div className="md:hidden border-t border-white/[0.06] py-4">
+              <div className="flex flex-col gap-1">
+                {[
+                  { label: 'Courses', href: '#courses' },
+                  { label: 'Mentors', href: '#instructors' },
+                  { label: 'Pricing', href: '#pricing' },
+                  { label: 'Results', href: '#results' },
+                  { label: 'Contact', href: '#contact' },
+                ].map((link) => (
+                  <a key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} className="rounded-xl px-3 py-3 text-sm font-medium text-muted-foreground hover:bg-white/[0.05] hover:text-foreground transition-colors">
+                    {link.label}
+                  </a>
+                ))}
+                <a href="tel:09422105262" className="mt-2 flex items-center justify-center gap-2 rounded-full border border-primary/30 px-4 py-3 text-sm font-semibold text-primary">
+                  <Phone className="w-4 h-4" /> Book a free demo
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </motion.nav>
 
