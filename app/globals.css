@@ -135,7 +135,7 @@
   }
 
   .glass-card {
-    @apply bg-card/80 backdrop-blur-lg border border-border/40 rounded-xl shadow-lg;
+    @apply bg-card/75 backdrop-blur-xl border border-border/40 rounded-2xl shadow-lg;
   }
 
   .text-balance {
@@ -143,15 +143,15 @@
   }
 
   /* Clean scientific background — soft gradient mesh with subtle dot pattern */
-  .pcb-circuit-bg {
+  .academy-shell {
     background-color: hsl(var(--background));
     background-image:
-      radial-gradient(circle at 15% 20%, hsl(var(--primary) / 0.06) 0%, transparent 35%),
-      radial-gradient(circle at 85% 70%, hsl(var(--accent) / 0.05) 0%, transparent 35%),
-      radial-gradient(circle at 50% 100%, hsl(var(--success) / 0.04) 0%, transparent 40%),
-      radial-gradient(circle, hsl(var(--circuit-node) / 0.08) 1px, transparent 1.5px);
-    background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px;
-    background-position: 0 0, 0 0, 0 0, 0 0;
+      radial-gradient(circle at 12% 8%, hsl(var(--primary) / 0.07) 0%, transparent 28%),
+      radial-gradient(circle at 88% 38%, hsl(var(--accent) / 0.045) 0%, transparent 26%);
+  }
+
+  .pcb-circuit-bg {
+    background-color: hsl(var(--background));
   }
 
   .dark .pcb-circuit-bg {
@@ -187,11 +187,11 @@
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20;
   }
 
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28;
   }
 
   .container-padding {
@@ -320,21 +320,8 @@
 
   /* PCB-style card with circuit border accent */
   .pcb-card {
-    @apply relative overflow-hidden rounded-xl border bg-card transition-all duration-300;
-    border-color: hsl(var(--circuit-line) / 0.2);
-  }
-
-  .pcb-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 24px;
-    height: 24px;
-    border-top: 2px solid hsl(var(--circuit-node) / 0.4);
-    border-left: 2px solid hsl(var(--circuit-node) / 0.4);
-    border-top-left-radius: 0.75rem;
-    pointer-events: none;
+    @apply relative overflow-hidden rounded-2xl border bg-card transition-all duration-300;
+    border-color: hsl(var(--circuit-line) / 0.16);
   }
 
   /* Animated circuit pulse line */

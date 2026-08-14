@@ -211,15 +211,15 @@ export default function HomePage() {
   const backgroundY = useTransform(scrollY, [0, 400], [0, 150]);
 
   return (
-    <div className="min-h-screen pcb-circuit-bg">
+    <div className="min-h-screen academy-shell">
       {/* Navigation */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/40"
+        className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-2xl border-b border-white/[0.06]"
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="flex items-center justify-between h-[76px]">
             <Logo size="md" />
             <div className="hidden md:flex items-center gap-8">
               {[
@@ -252,12 +252,11 @@ export default function HomePage() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <motion.div style={{ y: backgroundY }} className="absolute inset-0">
-          <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/image copy.png')" }} />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/95" />
-          <div className="absolute inset-0 pcb-traces opacity-15" />
-          <div className="absolute inset-0 circuit-nodes opacity-20" />
+      <section className="relative min-h-[760px] flex items-center justify-center overflow-hidden pt-20">
+        <motion.div style={{ y: backgroundY }} className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,hsl(var(--primary)/.14),transparent_32%),radial-gradient(circle_at_10%_80%,hsl(var(--accent)/.08),transparent_28%),linear-gradient(180deg,#05070a_0%,hsl(var(--background))_75%)]" />
+          <div className="absolute inset-0 pcb-traces opacity-[0.06]" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
 
           {/* Floating science elements */}
           <motion.div animate={{ y: [-20, 20, -20], rotate: [0, 10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-20 left-10 opacity-20">
@@ -281,11 +280,11 @@ export default function HomePage() {
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl opacity-40 animate-pulse-glow" style={{ animationDelay: '1s' }} />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="relative z-10 container mx-auto px-4 text-center">
+        <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="relative z-10 container mx-auto max-w-6xl px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-6">
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium">Trusted by 2000+ Students in Kaij, Maharashtra</span>
+              <span className="text-sm font-medium">A focused learning system for ambitious students</span>
             </div>
           </motion.div>
 
@@ -293,37 +292,36 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-4xl mx-auto leading-tight text-balance"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.25rem] font-bold mb-6 max-w-4xl mx-auto leading-[1.02] tracking-[-0.04em] text-balance"
           >
-            Learn with <span className="gradient-text">Precision</span>.
+            Build the foundation for your
             <br className="hidden sm:block" />
-            Grow with <span className="gradient-text">Purpose</span>.
+            <span className="gradient-text">next big win.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance"
+            className="text-base md:text-lg text-muted-foreground mb-9 max-w-xl mx-auto leading-relaxed text-balance"
           >
-            Premier coaching for <strong className="text-foreground">Physics</strong>, <strong className="text-foreground">Chemistry</strong> & <strong className="text-foreground">Biology</strong>.
-            Preparing students for Board Exams, NEET & JEE since 2010.
+            A premium, outcome-driven academy for <strong className="text-foreground">Physics</strong>, <strong className="text-foreground">Chemistry</strong>, and <strong className="text-foreground">Biology</strong> — from first principles to exam day confidence.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-10"
+            className="flex flex-col sm:flex-row gap-3 justify-center mb-14"
           >
             <a href="#courses">
-              <Button size="lg" className="gradient-bg gap-2 h-14 px-8 text-lg shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all">
+              <Button size="lg" className="gradient-bg gap-2 h-12 px-7 text-base shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/40 transition-all rounded-full">
                 Explore Courses
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </a>
             <a href="tel:09422105262">
-              <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-2 hover:bg-primary/5 gap-2">
+              <Button size="lg" variant="outline" className="h-12 px-7 text-base border-white/15 hover:bg-white/[0.05] gap-2 rounded-full">
                 <PlayCircle className="w-5 h-5" />
                 Book Free Demo
               </Button>
@@ -335,7 +333,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto"
           >
             {stats.map((stat, i) => (
               <motion.div
@@ -343,7 +341,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + i * 0.1 }}
-                className="glass-card p-5 rounded-xl relative overflow-hidden"
+                className="bg-white/[0.035] border border-white/[0.08] p-5 rounded-2xl relative overflow-hidden backdrop-blur-md"
               >
                 <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 circuit-pulse-line" />
                 <stat.icon className="w-6 h-6 mx-auto mb-2 text-primary" />
@@ -373,25 +371,24 @@ export default function HomePage() {
       </section>
 
       {/* Courses Showcase */}
-      <section id="courses" className="section-padding bg-card/50 relative overflow-hidden">
-        <div className="absolute inset-0 pcb-traces opacity-10" />
-        <div className="container mx-auto px-4 relative z-10">
+      <section id="courses" className="section-padding relative overflow-hidden">
+        <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <SectionHeader badge="Our Courses" title="Courses Designed for Excellence" subtitle="Comprehensive coaching for 11th & 12th Science with focus on Board, NEET & JEE preparation" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {courses.map((course, i) => (
               <motion.div key={course.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <Card className="group overflow-hidden h-full card-hover border-2 hover:border-primary/50 pcb-card">
+                <Card className="group overflow-hidden h-full card-hover border border-white/[0.08] hover:border-primary/40 pcb-card">
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className={`absolute top-4 left-4 w-12 h-12 rounded-xl bg-gradient-to-br ${course.color} flex items-center justify-center shadow-lg`}>
-                      <course.icon className="w-6 h-6 text-white" />
+                    <div className={`absolute top-4 left-4 w-11 h-11 rounded-xl bg-gradient-to-br ${course.color} flex items-center justify-center shadow-lg ring-1 ring-white/10`}>
+                      <course.icon className="w-5 h-5 text-white" />
                     </div>
-                    <div className="absolute top-4 right-4 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-sm">
-                      <span className="text-xs font-semibold text-primary">{course.level}</span>
+                    <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
+                      <span className="text-xs font-semibold text-white/90">{course.level}</span>
                     </div>
                     <div className="absolute bottom-4 left-4">
-                      <span className="text-2xl font-bold text-white drop-shadow-lg">{course.price}</span>
+                      <span className="text-xl font-bold text-white drop-shadow-lg">{course.price}</span>
                     </div>
                   </div>
                   <CardHeader className="pb-2">
@@ -416,7 +413,7 @@ export default function HomePage() {
                     </div>
                   </CardContent>
                   <CardFooter className="pt-0">
-                    <Button variant="secondary" className="w-full group-hover:bg-primary group-hover:text-white transition-colors gap-1.5">
+                    <Button variant="secondary" className="w-full group-hover:bg-primary group-hover:text-white transition-colors gap-1.5 rounded-full">
                       View Details
                       <ArrowRight className="w-4 h-4" />
                     </Button>
@@ -430,19 +427,17 @@ export default function HomePage() {
 
       {/* Why Choose Us */}
       <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 science-gradient" />
-        <div className="absolute inset-0 circuit-nodes opacity-15" />
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <SectionHeader badge="Why Us" title="Why Choose Awad Academy?" subtitle="We are committed to providing the best science education with a premium learning experience" />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyChooseUs.map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <Card className="h-full text-center p-6 card-hover border-2 hover:border-primary/50 group pcb-card">
-                  <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}>
-                    <item.icon className="w-8 h-8 text-white" />
+                <Card className="h-full text-center p-7 card-hover border border-white/[0.08] hover:border-primary/40 group pcb-card">
+                  <div className={`w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg ring-1 ring-white/10`}>
+                    <item.icon className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 </Card>
               </motion.div>
             ))}
@@ -451,17 +446,16 @@ export default function HomePage() {
       </section>
 
       {/* Instructors / Mentors */}
-      <section id="instructors" className="section-padding bg-card/50 relative overflow-hidden">
-        <div className="absolute inset-0 pcb-traces opacity-10" />
-        <div className="container mx-auto px-4 relative z-10">
+      <section id="instructors" className="section-padding bg-card/30 relative overflow-hidden">
+        <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <SectionHeader badge="Our Mentors" title="Learn from the Best" subtitle="Experienced educators dedicated to your success in board and competitive exams" />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {instructors.map((mentor, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <Card className="group overflow-hidden h-full card-hover border-2 hover:border-primary/50 pcb-card">
-                  <div className="relative aspect-square overflow-hidden">
-                    <img src={mentor.image} alt={mentor.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <Card className="group overflow-hidden h-full card-hover border border-white/[0.08] hover:border-primary/40 pcb-card">
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <img src={mentor.image} alt={mentor.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
                       <h3 className="font-bold text-white text-lg">{mentor.name}</h3>
                       <p className="text-sm text-primary">{mentor.role}</p>
@@ -500,9 +494,7 @@ export default function HomePage() {
 
       {/* Testimonials - Auto-scroll carousel */}
       <section id="results" className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 science-gradient" />
-        <div className="absolute inset-0 molecule-bg opacity-50" />
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <SectionHeader badge="Testimonials" title="Student Success Stories" subtitle="Hear from our students who achieved their dreams with Awad Academy" />
         </div>
 
@@ -515,7 +507,7 @@ export default function HomePage() {
           <div className="flex gap-6 marquee-track">
             {[...testimonials, ...testimonials].map((t, i) => (
               <div key={i} className="flex-shrink-0 w-[340px] md:w-[400px]">
-                <Card className="h-full card-hover overflow-hidden pcb-card">
+                <Card className="h-full card-hover overflow-hidden pcb-card border border-white/[0.08]">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-4">
                       <div className="achievement-badge">
@@ -548,8 +540,8 @@ export default function HomePage() {
         </div>
 
         {/* Achievement stats */}
-        <div className="container mx-auto px-4 relative z-10 mt-16">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="container mx-auto max-w-6xl px-4 relative z-10 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             {[
               { value: '2000+', label: 'Students Trained', icon: Users },
               { value: '95%', label: 'Success Rate', icon: TrendingUp },
@@ -558,7 +550,7 @@ export default function HomePage() {
               { value: '500+', label: 'NEET Selections', icon: Trophy },
               { value: '200+', label: 'JEE Selections', icon: Medal },
             ].map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center p-5 rounded-xl glass-card hover:shadow-xl transition-all">
+              <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center p-5 rounded-2xl glass-card hover:shadow-xl transition-all">
                 <item.icon className="w-8 h-8 mx-auto mb-2 text-primary" />
                 <div className="text-2xl md:text-3xl font-bold gradient-text">{item.value}</div>
                 <div className="text-xs text-muted-foreground mt-1">{item.label}</div>
@@ -569,9 +561,8 @@ export default function HomePage() {
       </section>
 
       {/* Pricing / Plans */}
-      <section id="pricing" className="section-padding bg-card/50 relative overflow-hidden">
-        <div className="absolute inset-0 pcb-traces opacity-10" />
-        <div className="container mx-auto px-4 relative z-10">
+      <section id="pricing" className="section-padding bg-card/30 relative overflow-hidden">
+        <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <SectionHeader badge="Pricing" title="Choose Your Plan" subtitle="Transparent pricing for every learning goal. Switch or cancel anytime." />
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {pricingPlans.map((plan, i) => (
@@ -581,7 +572,7 @@ export default function HomePage() {
                     <Badge className="gradient-bg text-white px-4 py-1 text-xs font-semibold shadow-lg">Most Popular</Badge>
                   </div>
                 )}
-                <Card className={`h-full card-hover border-2 ${plan.popular ? 'border-primary shadow-xl shadow-primary/20' : 'hover:border-primary/50'} pcb-card relative overflow-hidden`}>
+                <Card className={`h-full card-hover border ${plan.popular ? 'border-primary shadow-xl shadow-primary/20' : 'border-white/[0.08] hover:border-primary/40'} pcb-card relative overflow-hidden`}>
                   {plan.popular && (
                     <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary/0 via-primary/60 to-primary/0 circuit-pulse-line" />
                   )}
@@ -620,13 +611,13 @@ export default function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-padding bg-secondary/30">
-        <div className="container mx-auto px-4">
+      <section className="section-padding bg-secondary/20">
+        <div className="container mx-auto max-w-3xl px-4">
           <SectionHeader badge="FAQ" title="Frequently Asked Questions" subtitle="Find answers to common queries about our courses and academy" />
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full space-y-4">
               {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border rounded-lg px-4 bg-card hover:border-primary/30 transition-colors">
+                <AccordionItem key={i} value={`item-${i}`} className="border border-white/[0.08] rounded-2xl px-5 bg-card hover:border-primary/30 transition-colors">
                   <AccordionTrigger className="text-left hover:no-underline py-4">
                     <span className="font-medium">{faq.question}</span>
                   </AccordionTrigger>
@@ -639,27 +630,24 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 gradient-bg opacity-5" />
-        <div className="absolute inset-0 pcb-traces opacity-15" />
-        <div className="absolute inset-0 molecule-bg opacity-50" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center glass-card p-8 md:p-12 rounded-2xl border-2 border-primary/20 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden">
+        <div className="container mx-auto max-w-4xl px-4 relative z-10">
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="text-center glass-card p-10 md:p-16 rounded-3xl border border-primary/20 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 circuit-pulse-line" />
             <Flame className="w-12 h-12 mx-auto mb-4 text-orange-500" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Start Your Science Journey Today!</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance tracking-[-0.03em]">Start Your Science Journey Today!</h2>
             <p className="text-lg text-muted-foreground mb-8 text-balance">
               Join Awad Educational Academy and build a strong foundation for your future in Science.
               <span className="block mt-1 text-orange-500 font-semibold">Limited seats available for new batches.</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a href="tel:09422105262">
-                <Button size="lg" className="gradient-bg gap-2 h-14 px-8 text-lg shadow-lg shadow-primary/30">
+                <Button size="lg" className="gradient-bg gap-2 h-12 px-7 text-base shadow-lg shadow-primary/30 rounded-full">
                   <Phone className="w-5 h-5" />Call: 09422105262
                 </Button>
               </a>
               <a href="https://maps.google.com/?q=Awad+Educational+Academy+Kaij" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-2 gap-2">
+                <Button size="lg" variant="outline" className="h-12 px-7 text-base border-white/15 hover:bg-white/[0.05] gap-2 rounded-full">
                   <MapPin className="w-5 h-5" />Visit Academy
                 </Button>
               </a>
@@ -669,10 +657,8 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="border-t bg-card relative overflow-hidden">
-        <div className="absolute inset-0 pcb-traces opacity-10" />
-        <div className="absolute inset-0 molecule-bg opacity-30" />
-        <div className="container mx-auto px-4 py-12 relative z-10">
+      <footer id="contact" className="border-t border-white/[0.06] bg-card/40 relative overflow-hidden">
+        <div className="container mx-auto max-w-6xl px-4 py-14 relative z-10">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             {/* Brand + Newsletter */}
             <div className="md:col-span-2">
