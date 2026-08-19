@@ -26,50 +26,50 @@ const courses = [
     image: 'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=600',
     category: 'Physics', level: '11th-12th', duration: '12 months', lessons: 150, price: '₹12,000',
     description: 'Mechanics, Optics, Thermodynamics with numerical practice',
-    color: 'from-sky-500 to-cyan-400', icon: Atom,
+    color: 'from-emerald-500 to-green-400', icon: Atom,
   },
   {
     id: '2', title: 'Chemistry Foundation', instructor: 'Awad Sir', rating: 4.8, reviews: 223, students: 480,
     image: 'https://images.pexels.com/photos/2280551/pexels-photo-2280551.jpeg?auto=compress&cs=tinysrgb&w=600',
     category: 'Chemistry', level: '11th-12th', duration: '12 months', lessons: 140, price: '₹12,000',
     description: 'Organic, Inorganic & Physical Chemistry with lab work',
-    color: 'from-emerald-500 to-teal-400', icon: FlaskConical,
+    color: 'from-green-500 to-teal-400', icon: FlaskConical,
   },
   {
     id: '3', title: 'Biology Foundation', instructor: 'Awad Sir', rating: 4.9, reviews: 312, students: 640,
     image: 'https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg?auto=compress&cs=tinysrgb&w=600',
     category: 'Biology', level: '11th-12th', duration: '12 months', lessons: 135, price: '₹12,000',
     description: 'Botany & Zoology with practical knowledge',
-    color: 'from-teal-500 to-cyan-500', icon: Dna,
+    color: 'from-teal-500 to-emerald-500', icon: Dna,
   },
   {
     id: '4', title: 'NEET Preparation', instructor: 'Awad Sir', rating: 4.9, reviews: 421, students: 850,
     image: 'https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=600',
     category: 'NEET', level: 'Medical', duration: '24 months', lessons: 450, price: '₹35,000',
     description: 'Complete NEET UG with mock tests & doubt sessions',
-    color: 'from-amber-500 to-orange-400', icon: Target,
+    color: 'from-amber-500 to-yellow-400', icon: Target,
   },
   {
     id: '5', title: 'JEE Preparation', instructor: 'Awad Sir', rating: 4.8, reviews: 198, students: 420,
     image: 'https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=600',
     category: 'JEE', level: 'Engineering', duration: '24 months', lessons: 420, price: '₹38,000',
     description: 'PCM mastery with JEE Main & Advanced focus',
-    color: 'from-rose-500 to-red-400', icon: GraduationCap,
+    color: 'from-yellow-500 to-amber-400', icon: GraduationCap,
   },
   {
     id: '6', title: 'Board Exam Mastery', instructor: 'Awad Sir', rating: 4.9, reviews: 256, students: 600,
     image: 'https://images.pexels.com/photos/5212335/pexels-photo-5212335.jpeg?auto=compress&cs=tinysrgb&w=600',
     category: 'Boards', level: '12th', duration: '10 months', lessons: 200, price: '₹10,000',
     description: 'Maharashtra Board PCM with chapter-wise tests',
-    color: 'from-cyan-500 to-blue-400', icon: Award,
+    color: 'from-lime-500 to-green-400', icon: Award,
   },
 ];
 
 const whyChooseUs = [
-  { icon: Brain, title: 'Expert Mentors', description: 'Learn from Awad Sir with 15+ years of teaching experience and a proven track record of student success.', color: 'from-sky-500 to-cyan-400' },
-  { icon: PlayCircle, title: 'Live + Recorded Classes', description: 'Never miss a lesson. Attend live or watch recorded sessions anytime, on any device.', color: 'from-emerald-500 to-teal-400' },
-  { icon: BadgeCheck, title: 'Certification', description: 'Earn a recognized completion certificate after each course to showcase your achievement.', color: 'from-amber-500 to-orange-400' },
-  { icon: Rocket, title: 'Job Assistance', description: 'Career guidance, interview prep, and placement support for our top-performing students.', color: 'from-rose-500 to-red-400' },
+  { icon: Brain, title: 'Expert Mentors', description: 'Learn from Awad Sir with 15+ years of teaching experience and a proven track record of student success.', color: 'from-emerald-500 to-green-400' },
+  { icon: PlayCircle, title: 'Live + Recorded Classes', description: 'Never miss a lesson. Attend live or watch recorded sessions anytime, on any device.', color: 'from-green-500 to-teal-400' },
+  { icon: BadgeCheck, title: 'Certification', description: 'Earn a recognized completion certificate after each course to showcase your achievement.', color: 'from-amber-500 to-yellow-400' },
+  { icon: Rocket, title: 'Job Assistance', description: 'Career guidance, interview prep, and placement support for our top-performing students.', color: 'from-yellow-500 to-amber-400' },
 ];
 
 const instructors = [
@@ -112,17 +112,17 @@ const pricingPlans = [
   {
     name: 'Foundation', price: '₹12,000', period: '/year', description: 'Perfect for 11th & 12th Science board exam preparation',
     features: ['Single subject (PCM or B)', 'Live + recorded classes', 'Chapter-wise tests', 'Doubt sessions (weekly)', 'Study material included'],
-    popular: false, color: 'from-sky-500 to-cyan-400', icon: BookOpen,
+    popular: false, color: 'from-emerald-500 to-green-400', icon: BookOpen,
   },
   {
     name: 'Complete NEET', price: '₹35,000', period: '/year', description: 'Full NEET preparation with all subjects and mock tests',
     features: ['All 3 subjects (PCB)', 'Live + recorded classes', 'Weekly mock tests', 'Daily doubt sessions', 'NEET test series (20+ tests)', 'Performance analytics', 'Career guidance'],
-    popular: true, color: 'from-amber-500 to-orange-400', icon: Target,
+    popular: true, color: 'from-amber-500 to-yellow-400', icon: Target,
   },
   {
     name: 'Complete JEE', price: '₹38,000', period: '/year', description: 'Full JEE Main & Advanced preparation across PCM',
     features: ['All 3 subjects (PCM)', 'Live + recorded classes', 'Weekly mock tests', 'Daily doubt sessions', 'JEE test series (25+ tests)', 'Performance analytics', 'Career guidance'],
-    popular: false, color: 'from-rose-500 to-red-400', icon: GraduationCap,
+    popular: false, color: 'from-yellow-500 to-amber-400', icon: GraduationCap,
   },
 ];
 
@@ -284,7 +284,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-[760px] flex items-center justify-center overflow-hidden pt-20">
         <motion.div style={{ y: backgroundY }} className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,hsl(var(--primary)/.14),transparent_32%),radial-gradient(circle_at_10%_80%,hsl(var(--accent)/.08),transparent_28%),linear-gradient(180deg,#05070a_0%,hsl(var(--background))_75%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,hsl(var(--primary)/.14),transparent_32%),radial-gradient(circle_at_10%_80%,hsl(var(--accent)/.10),transparent_28%),linear-gradient(180deg,#070a08_0%,hsl(var(--background))_75%)]" />
           <div className="absolute inset-0 pcb-traces opacity-[0.06]" />
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
 
@@ -293,10 +293,10 @@ export default function HomePage() {
             <Atom className="w-32 h-32 text-primary" />
           </motion.div>
           <motion.div animate={{ y: [20, -20, 20], rotate: [0, -10, 0] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-32 right-10 opacity-20">
-            <FlaskConical className="w-28 h-28 text-emerald-500" />
+            <FlaskConical className="w-28 h-28 text-green-500" />
           </motion.div>
           <motion.div animate={{ y: [-15, 15, -15], rotate: [0, 5, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-1/3 right-1/4 opacity-15">
-            <Dna className="w-24 h-24 text-teal-500" />
+            <Dna className="w-24 h-24 text-teal-400" />
           </motion.div>
 
           {/* Circuit nodes */}
@@ -664,11 +664,11 @@ export default function HomePage() {
         <div className="container mx-auto max-w-4xl px-4 relative z-10">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="text-center glass-card p-10 md:p-16 rounded-3xl border border-primary/20 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 circuit-pulse-line" />
-            <Flame className="w-12 h-12 mx-auto mb-4 text-orange-500" />
+            <Flame className="w-12 h-12 mx-auto mb-4 text-amber-500" />
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance tracking-[-0.03em]">Start Your Science Journey Today!</h2>
             <p className="text-lg text-muted-foreground mb-8 text-balance">
               Join Awad Educational Academy and build a strong foundation for your future in Science.
-              <span className="block mt-1 text-orange-500 font-semibold">Limited seats available for new batches.</span>
+              <span className="block mt-1 text-amber-500 font-semibold">Limited seats available for new batches.</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a href="tel:09422105262">

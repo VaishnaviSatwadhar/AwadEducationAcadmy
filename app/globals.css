@@ -4,107 +4,100 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 215 28% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 215 28% 12%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 12%;
-    --primary: 199 89% 42%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 200 15% 95%;
-    --secondary-foreground: 215 28% 17%;
-    --muted: 200 15% 94%;
-    --muted-foreground: 215 14% 45%;
-    --accent: 187 85% 43%;
-    --accent-foreground: 0 0% 100%;
+    --background: 60 25% 97%;
+    --foreground: 150 25% 12%;
+    --card: 60 20% 99%;
+    --card-foreground: 150 25% 12%;
+    --popover: 60 20% 99%;
+    --popover-foreground: 150 25% 12%;
+    --primary: 142 65% 38%;
+    --primary-foreground: 60 25% 98%;
+    --secondary: 60 15% 93%;
+    --secondary-foreground: 150 22% 17%;
+    --muted: 60 12% 92%;
+    --muted-foreground: 150 12% 42%;
+    --accent: 45 88% 50%;
+    --accent-foreground: 150 25% 10%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --success: 158 64% 38%;
-    --success-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 38 92% 12%;
-    --border: 200 15% 88%;
-    --input: 200 15% 88%;
-    --ring: 199 89% 42%;
+    --success: 142 60% 38%;
+    --success-foreground: 60 25% 98%;
+    --warning: 45 92% 52%;
+    --warning-foreground: 45 60% 12%;
+    --border: 60 15% 87%;
+    --input: 60 15% 87%;
+    --ring: 142 65% 38%;
     --radius: 0.75rem;
 
-    --chart-1: 199 89% 42%;
-    --chart-2: 158 64% 38%;
-    --chart-3: 187 85% 43%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: 142 65% 38%;
+    --chart-2: 45 88% 50%;
+    --chart-3: 160 55% 42%;
+    --chart-4: 38 80% 55%;
+    --chart-5: 100 50% 45%;
 
-    --gradient-start: 199 89% 42%;
-    --gradient-end: 187 85% 43%;
+    --gradient-start: 142 65% 38%;
+    --gradient-end: 45 88% 50%;
 
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 215 28% 12%;
-    --sidebar-primary: 199 89% 42%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 200 15% 94%;
-    --sidebar-accent-foreground: 215 28% 17%;
-    --sidebar-border: 200 15% 88%;
-    --sidebar-ring: 199 89% 42%;
+    --sidebar-background: 60 25% 97%;
+    --sidebar-foreground: 150 25% 12%;
+    --sidebar-primary: 142 65% 38%;
+    --sidebar-primary-foreground: 60 25% 98%;
+    --sidebar-accent: 60 12% 92%;
+    --sidebar-accent-foreground: 150 22% 17%;
+    --sidebar-border: 60 15% 87%;
+    --sidebar-ring: 142 65% 38%;
 
-    --science-blue: 199 89% 42%;
-    --science-teal: 187 85% 43%;
-    --science-green: 158 64% 38%;
-    --physics-color: 199 89% 42%;
-    --chemistry-color: 158 64% 38%;
-    --biology-color: 187 85% 43%;
-
-    --circuit-line: 199 50% 55%;
-    --circuit-node: 187 85% 43%;
-    --pcb-bg: 210 30% 10%;
+    --circuit-line: 142 45% 50%;
+    --circuit-node: 45 85% 52%;
+    --pcb-bg: 150 18% 8%;
   }
 
   .dark {
-    --background: 210 30% 6%;
-    --foreground: 200 15% 92%;
-    --card: 210 28% 9%;
-    --card-foreground: 200 15% 92%;
-    --popover: 210 28% 9%;
-    --popover-foreground: 200 15% 92%;
-    --primary: 199 89% 52%;
-    --primary-foreground: 210 30% 6%;
-    --secondary: 210 25% 14%;
-    --secondary-foreground: 200 15% 92%;
-    --muted: 210 25% 14%;
-    --muted-foreground: 200 12% 62%;
-    --accent: 187 85% 50%;
-    --accent-foreground: 210 30% 6%;
+    --background: 150 16% 5%;
+    --foreground: 60 12% 92%;
+    --card: 150 14% 8%;
+    --card-foreground: 60 12% 92%;
+    --popover: 150 14% 8%;
+    --popover-foreground: 60 12% 92%;
+    --primary: 142 68% 48%;
+    --primary-foreground: 150 16% 5%;
+    --secondary: 150 12% 13%;
+    --secondary-foreground: 60 12% 92%;
+    --muted: 150 12% 13%;
+    --muted-foreground: 60 8% 60%;
+    --accent: 45 92% 55%;
+    --accent-foreground: 150 16% 5%;
     --destructive: 0 62% 45%;
     --destructive-foreground: 0 0% 100%;
-    --success: 158 64% 42%;
-    --success-foreground: 210 30% 6%;
-    --warning: 38 92% 55%;
-    --warning-foreground: 38 92% 10%;
-    --border: 210 25% 16%;
-    --input: 210 25% 16%;
-    --ring: 199 89% 52%;
+    --success: 142 60% 42%;
+    --success-foreground: 150 16% 5%;
+    --warning: 45 92% 55%;
+    --warning-foreground: 45 60% 10%;
+    --border: 150 12% 15%;
+    --input: 150 12% 15%;
+    --ring: 142 68% 48%;
 
-    --chart-1: 199 89% 52%;
-    --chart-2: 158 64% 42%;
-    --chart-3: 187 85% 50%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: 142 68% 48%;
+    --chart-2: 45 92% 55%;
+    --chart-3: 160 55% 45%;
+    --chart-4: 38 80% 58%;
+    --chart-5: 100 50% 47%;
 
-    --gradient-start: 199 89% 52%;
-    --gradient-end: 187 85% 50%;
+    --gradient-start: 142 68% 48%;
+    --gradient-end: 45 92% 55%;
 
-    --sidebar-background: 210 30% 6%;
-    --sidebar-foreground: 200 15% 92%;
-    --sidebar-primary: 199 89% 52%;
-    --sidebar-primary-foreground: 210 30% 6%;
-    --sidebar-accent: 210 25% 14%;
-    --sidebar-accent-foreground: 200 15% 92%;
-    --sidebar-border: 210 25% 16%;
-    --sidebar-ring: 199 89% 52%;
+    --sidebar-background: 150 16% 5%;
+    --sidebar-foreground: 60 12% 92%;
+    --sidebar-primary: 142 68% 48%;
+    --sidebar-primary-foreground: 150 16% 5%;
+    --sidebar-accent: 150 12% 13%;
+    --sidebar-accent-foreground: 60 12% 92%;
+    --sidebar-border: 150 12% 15%;
+    --sidebar-ring: 142 68% 48%;
 
-    --circuit-line: 199 60% 60%;
-    --circuit-node: 187 90% 55%;
-    --pcb-bg: 210 35% 4%;
+    --circuit-line: 142 50% 55%;
+    --circuit-node: 45 88% 55%;
+    --pcb-bg: 150 20% 4%;
   }
 }
 
@@ -146,8 +139,9 @@
   .academy-shell {
     background-color: hsl(var(--background));
     background-image:
-      radial-gradient(circle at 12% 8%, hsl(var(--primary) / 0.07) 0%, transparent 28%),
-      radial-gradient(circle at 88% 38%, hsl(var(--accent) / 0.045) 0%, transparent 26%);
+      radial-gradient(circle at 12% 8%, hsl(var(--primary) / 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 88% 38%, hsl(var(--accent) / 0.05) 0%, transparent 28%),
+      radial-gradient(circle at 50% 100%, hsl(var(--success) / 0.04) 0%, transparent 35%);
   }
 
   .pcb-circuit-bg {
@@ -271,8 +265,8 @@
   /* Achievement badge */
   .achievement-badge {
     @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium;
-    background: linear-gradient(135deg, hsl(45 100% 50% / 0.15), hsl(35 100% 60% / 0.15));
-    border: 1px solid hsl(45 100% 50% / 0.25);
+    background: linear-gradient(135deg, hsl(45 92% 55% / 0.15), hsl(38 85% 50% / 0.12));
+    border: 1px solid hsl(45 92% 55% / 0.25);
   }
 
   /* Hero text shadow */
